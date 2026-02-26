@@ -1,0 +1,523 @@
+{
+  "metadata": {
+    "totalBlocks": 100,
+    "blockTypes": {
+      "paragraph": 4,
+      "callout": 27,
+      "divider": 9,
+      "heading_1": 9,
+      "heading_3": 16,
+      "bulleted_list_item": 35
+    }
+  },
+  "sections": [
+    {
+      "title": "Executive Summary",
+      "type": "h1",
+      "content": [
+        {
+          "type": "heading_3",
+          "text": "Key Metrics",
+          "blockId": "30b2208f-6c7a-81b8-94d9-d3834cde07c9"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Total Orders: 287",
+          "blockId": "30b2208f-6c7a-81c4-9967-f893d2ee58cb"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Unique Customers: 166",
+          "blockId": "30b2208f-6c7a-81a9-aed9-d38f0e0d0b87"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Average Order Value (AOV): €467.28",
+          "blockId": "30b2208f-6c7a-81ac-810c-c60b17cb5211"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Repeat Purchase Rate: 27.11%",
+          "blockId": "30b2208f-6c7a-81b2-888e-ca13f6f8f9af"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Average Customer Age: 38.8 years",
+          "blockId": "30b2208f-6c7a-81fa-9fc3-db1c464436a2"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Average BMI: 24.6",
+          "blockId": "30b2208f-6c7a-81b9-bd5e-f513b4295586"
+        },
+        {
+          "type": "heading_3",
+          "text": "Primary Buyer Persona: \"Marta, 35-44 anni\"",
+          "blockId": "30b2208f-6c7a-81a4-8968-c64d60a8932e"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Donna italiana, età media 39 anni",
+          "blockId": "30b2208f-6c7a-8179-9e93-edbdaa52b3d4"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "BMI medio 24.6 (Normopeso)",
+          "blockId": "30b2208f-6c7a-8121-a331-f68d86e84a87"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Profilo psicologico dominante: Driver",
+          "blockId": "30b2208f-6c7a-81af-aa65-e8bd76f0c862"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Obiettivo principale: Perdita di peso",
+          "blockId": "30b2208f-6c7a-81bf-9edd-c91ff7a1557d"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Budget medio per acquisto: €467.28",
+          "blockId": "30b2208f-6c7a-8140-bfb1-fda183458740"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-81f5-b208-e8859223625f"
+        }
+      ]
+    },
+    {
+      "title": "1. Product Performance Analysis",
+      "type": "h1",
+      "content": [
+        {
+          "type": "heading_3",
+          "text": "Top 5 Products by Revenue",
+          "blockId": "30b2208f-6c7a-81a8-9f3e-e71dcf443d70"
+        },
+        {
+          "type": "callout",
+          "text": "1. HOLO COACHING FULL TEAM\n81 vendite · €50,862.50 · Prezzo medio €627.93 · Market Share 37.9%",
+          "blockId": "30b2208f-6c7a-8180-ab4c-d35ea398d9c5"
+        },
+        {
+          "type": "callout",
+          "text": "2. HOLO COACHING FULL HEAD COACH\n63 vendite · €48,171.28 · Prezzo medio €764.62 · Market Share 35.9%",
+          "blockId": "30b2208f-6c7a-81cf-87b4-f43e93f4bcd5"
+        },
+        {
+          "type": "callout",
+          "text": "3. HOLO COACHING DIET HEAD COACH\n27 vendite · €15,289.00 · Prezzo medio €566.26 · Market Share 11.4%",
+          "blockId": "30b2208f-6c7a-81c3-aae5-fcfcd7cafc9b"
+        },
+        {
+          "type": "callout",
+          "text": "4. HOLO COACHING DIET TEAM\n20 vendite · €7,920.00 · Prezzo medio €396.00 · Market Share 5.9%",
+          "blockId": "30b2208f-6c7a-8100-ac8a-e87dd089fe89"
+        },
+        {
+          "type": "callout",
+          "text": "5. HOLO COACHING TRAINING TEAM\n13 vendite · €4,642.00 · Prezzo medio €357.08 · Market Share 3.5%",
+          "blockId": "30b2208f-6c7a-81cf-9ae5-c36abb8de3f5"
+        },
+        {
+          "type": "heading_3",
+          "text": "💡 Product Insights",
+          "blockId": "30b2208f-6c7a-810d-a208-dc2d41c8fd95"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Best Seller: HOLO COACHING FULL TEAM (81 units, €50,862.50)",
+          "blockId": "30b2208f-6c7a-81d2-8f64-f4eef668fcbb"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Premium Product: HOLO COACHING FULL HEAD COACH (€764.62 avg price)",
+          "blockId": "30b2208f-6c7a-8168-94a8-fccdd6e3fc76"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Revenue Driver: FULL TEAM rappresenta il 37.9% del fatturato",
+          "blockId": "30b2208f-6c7a-816c-89dc-fe4967ed65aa"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-817a-807d-c6ba30ff08b8"
+        }
+      ]
+    },
+    {
+      "title": "2. Demographic Segmentation",
+      "type": "h1",
+      "content": [
+        {
+          "type": "heading_3",
+          "text": "👩 Age Distribution",
+          "blockId": "30b2208f-6c7a-8162-91a8-cc85bc0bc91d"
+        },
+        {
+          "type": "callout",
+          "text": "18-24 anni: 14 (1.8%) ░\n25-34 anni: 226 (29.1%) ██████\n35-44 anni: 342 (44.0%) █████████ ← DOMINANTE\n45-54 anni: 176 (22.7%) █████\n55+ anni: 19 (2.4%) ░\n\nTotale risposte: 777 · Età media: 38.8 anni",
+          "blockId": "30b2208f-6c7a-811d-a8c1-f4c11054349c"
+        },
+        {
+          "type": "heading_3",
+          "text": "💡 Insight Demografici",
+          "blockId": "30b2208f-6c7a-81fa-9f26-e1acd5718e9d"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Fascia principale: 35-44 anni (44%)",
+          "blockId": "30b2208f-6c7a-81fa-9839-d74b508092e0"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Età media: 38.8 anni",
+          "blockId": "30b2208f-6c7a-8129-8b54-c85bdb3d5ec8"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Range: Prevalentemente 25-54 anni (95.8%)",
+          "blockId": "30b2208f-6c7a-8170-a972-ecdaaa9fdb00"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-8139-9dd1-fa685508a32b"
+        }
+      ]
+    },
+    {
+      "title": "3. Segmentazione per Obiettivi",
+      "type": "h1",
+      "content": [
+        {
+          "type": "heading_3",
+          "text": "🎯 Top 5 Obiettivi delle Clienti",
+          "blockId": "30b2208f-6c7a-81c3-aceb-f9e746ff661e"
+        },
+        {
+          "type": "callout",
+          "text": "1. Perdita di peso — 118 (42.8%) █████████\n2. Ricomposizione corporea — 101 (36.6%) ███████\n3. Salute generale — 34 (12.3%) ███\n4. Aumento massa muscolare — 15 (5.4%) █\n5. Prestazione Atletica — 8 (2.9%) ░\n\nTotale risposte: 276",
+          "blockId": "30b2208f-6c7a-819d-94e0-d93ac41f9a69"
+        },
+        {
+          "type": "heading_3",
+          "text": "💡 Insight Obiettivi",
+          "blockId": "30b2208f-6c7a-8142-93ca-dff79f18c954"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Obiettivo primario: Perdita di peso",
+          "blockId": "30b2208f-6c7a-819a-aff3-e520245f2db5"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Categorie: Dimagrimento, tonificazione, massa muscolare, benessere",
+          "blockId": "30b2208f-6c7a-8141-9515-f2c79cc8d410"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Motivazione: Orientate ai risultati, focalizzate sulla trasformazione",
+          "blockId": "30b2208f-6c7a-810e-9ebd-e98228ca7794"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-8181-ba69-d266f80f570d"
+        }
+      ]
+    },
+    {
+      "title": "4. Segmentazione BMI & Salute",
+      "type": "h1",
+      "content": [
+        {
+          "type": "callout",
+          "text": "Sottopeso (<18.5): 4 (1.9%) ░\nNormopeso (18.5-24.9): 131 (62.4%) ████████████ ← DOMINANTE\nSovrappeso (25-29.9): 56 (26.7%) █████\nObeso (≥30): 19 (9.0%) ██\n\nTotale risposte BMI: 210 · BMI medio: 24.6",
+          "blockId": "30b2208f-6c7a-8152-9caf-d155f0cf9119"
+        },
+        {
+          "type": "heading_3",
+          "text": "💡 Insight Salute",
+          "blockId": "30b2208f-6c7a-8187-a059-c77ada22d739"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Categoria dominante: Normopeso",
+          "blockId": "30b2208f-6c7a-8189-ae44-c9a80dc68db3"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Focus salute: Fitness e tonificazione",
+          "blockId": "30b2208f-6c7a-810c-996e-dd65717b2485"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Livello intervento: Basso (peso sano)",
+          "blockId": "30b2208f-6c7a-8111-9a9d-e96709f37558"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-810e-97ee-c3d7c92e1f4c"
+        }
+      ]
+    },
+    {
+      "title": "5. Profili Psicologici Chase Hughes",
+      "type": "h1",
+      "content": [
+        {
+          "type": "heading_3",
+          "text": "🧠 I 6 Tipi Psicologici",
+          "blockId": "30b2208f-6c7a-8191-aef9-da55f4fe63e6"
+        },
+        {
+          "type": "callout",
+          "text": "Driver (59.5%) — 179 persone\nOrientate agli obiettivi, focalizzate sui risultati, valorizzano successo e conquiste",
+          "blockId": "30b2208f-6c7a-8174-a71e-e5fe5da0c554"
+        },
+        {
+          "type": "callout",
+          "text": "Expressive (22.6%) — 68 persone\nGuidate dalle emozioni, cercano ispirazione e passione",
+          "blockId": "30b2208f-6c7a-8198-b197-d3414a1b28b1"
+        },
+        {
+          "type": "callout",
+          "text": "Analytical (6.3%) — 19 persone\nGuidate dai dati, orientate alla ricerca, necessitano di prove e statistiche",
+          "blockId": "30b2208f-6c7a-81d1-acc6-f6d059878f3f"
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "blockId": "30b2208f-6c7a-8037-a8b4-c131447a3b69"
+        },
+        {
+          "type": "callout",
+          "text": "Connector (6.0%) — 18 persone\nFocalizzate sulle relazioni, costruiscono reti e connessioni",
+          "blockId": "30b2208f-6c7a-81eb-8e09-dfe28801000b"
+        },
+        {
+          "type": "callout",
+          "text": "Amiable (5.0%) — 15 persone\nOrientate alla community, valorizzano supporto e lavoro di squadra",
+          "blockId": "30b2208f-6c7a-815a-9083-f333aaf6f0ff"
+        },
+        {
+          "type": "callout",
+          "text": "Authority (0.7%) — 2 persone\nCercano competenza, credenziali e validazione professionale",
+          "blockId": "30b2208f-6c7a-81fc-92a0-f5120030c87b"
+        },
+        {
+          "type": "paragraph",
+          "text": "Totale profili classificati: 301",
+          "blockId": "30b2208f-6c7a-8163-8e64-e944ad3c02c6"
+        },
+        {
+          "type": "heading_3",
+          "text": "💡 Insight Psicologici",
+          "blockId": "30b2208f-6c7a-81b9-b7fe-fddd22055fd6"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Profilo dominante: Driver (quasi 60% del pubblico)",
+          "blockId": "30b2208f-6c7a-813e-a7ff-cfc0aca77260"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Stile comunicativo: Focus su risultati e trasformazione",
+          "blockId": "30b2208f-6c7a-8100-9e07-e7f021ca2fd7"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Approccio marketing: Enfatizzare risultati e conquiste concrete",
+          "blockId": "30b2208f-6c7a-81d8-9a72-ebc81250c3cf"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-819b-81cc-f1d922817e2e"
+        }
+      ]
+    },
+    {
+      "title": "6. Profilo Cliente Ideale (ICP)",
+      "type": "h1",
+      "content": [
+        {
+          "type": "heading_3",
+          "text": "👑 Persona Primaria: \"Marta, la Determinata\"",
+          "blockId": "30b2208f-6c7a-818f-a286-c77ec7df23d7"
+        },
+        {
+          "type": "callout",
+          "text": "DATI DEMOGRAFICI\nEtà: 39 anni (fascia 35-44) · Genere: Donna · Località: Italia · BMI: 24.6 (Normopeso)",
+          "blockId": "30b2208f-6c7a-814c-a7d0-df0f351438bc"
+        },
+        {
+          "type": "callout",
+          "text": "PSICOGRAFIA\nTipo psicologico: Driver\nObiettivo primario: Perdita di peso\nMotivazione: Risultati visibili, sentirsi sicura di sé, migliorare la salute\nPunti dolenti: Fallimenti precedenti, mancanza di struttura, risultati inconsistenti\nValori: Approccio scientifico, programmi personalizzati, supporto community",
+          "blockId": "30b2208f-6c7a-814e-b31f-fbbb6c0bf230"
+        },
+        {
+          "type": "callout",
+          "text": "COMPORTAMENTO D'ACQUISTO\nAOV: €467.28 · Tasso riacquisto: 27.1%\nProdotto preferito: HOLO COACHING FULL TEAM\nFattori decisivi: Risultati provati, guida esperta, opzioni pagamento flessibili",
+          "blockId": "30b2208f-6c7a-819e-9198-dec7d2d678a8"
+        },
+        {
+          "type": "callout",
+          "text": "PREFERENZE DI COMUNICAZIONE\nEmail marketing: Alto engagement\nProva sociale: Testimonianze e trasformazioni\nContenuti: Prima/dopo, educativi, motivazionali\nTono: Professionale ma empatico, focalizzato sui risultati",
+          "blockId": "30b2208f-6c7a-81a8-ab4d-c06c2ae68d96"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-817e-b628-d5633168ca0d"
+        }
+      ]
+    },
+    {
+      "title": "7. Framework Email Nurturing",
+      "type": "h1",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Sequenze email segmentate per profilo psicologico. Ogni sequenza ha 4 email (Giorno 1, 3, 5, 7).",
+          "blockId": "30b2208f-6c7a-8104-972d-ebdb3745110c"
+        },
+        {
+          "type": "callout",
+          "text": "Sequenza 1: Profilo Driver (59% del pubblico)\nFocus: Risultati, Conquiste, Trasformazione\n\nGiorno 1: \"Il Tuo Piano di Trasformazione in 90 Giorni\"\nGiorno 3: \"3 Errori che Bloccano i Tuoi Risultati\"\nGiorno 5: \"Il Metodo Scientifico per Risultati Garantiti\"\nGiorno 7: \"Ultima Occasione: Bonus Esclusivo\"",
+          "blockId": "30b2208f-6c7a-815b-88ba-cbd220774949"
+        },
+        {
+          "type": "callout",
+          "text": "Sequenza 2: Profilo Analytical (6% del pubblico)\nFocus: Dati, Ricerca, Prove\n\nGiorno 1: \"La Scienza della Trasformazione Fisica\"\nGiorno 3: \"Studio: Perché le Diete Tradizionali Falliscono\"\nGiorno 5: \"Il Protocollo Validato da 287 Trasformazioni\"\nGiorno 7: \"Analisi Gratuita del Tuo Profilo\"",
+          "blockId": "30b2208f-6c7a-811d-8ef2-eb3792da9474"
+        },
+        {
+          "type": "callout",
+          "text": "Sequenza 3: Profilo Expressive (23% del pubblico)\nFocus: Emozione, Ispirazione, Storie\n\nGiorno 1: \"La Storia di [Nome]: Da Insicura a Ispirazione\"\nGiorno 3: \"Come Ritrovare Te Stessa in 90 Giorni\"\nGiorno 5: \"Video: La Trasformazione Che Ti Emozionerà\"\nGiorno 7: \"Il Tuo Momento È Adesso\"",
+          "blockId": "30b2208f-6c7a-81e1-8e80-fa96994d15fb"
+        },
+        {
+          "type": "callout",
+          "text": "Sequenza 4: Profilo Amiable (5% del pubblico)\nFocus: Community, Supporto, Insieme\n\nGiorno 1: \"Benvenuta nella Community 362gradi\"\nGiorno 3: \"Come il Supporto di Gruppo Moltiplica i Risultati\"\nGiorno 5: \"Storia: Lei Ha Trovato Supporto (e Risultati)\"\nGiorno 7: \"Offerta Speciale: Porta Un'Amica\"",
+          "blockId": "30b2208f-6c7a-812b-a8b8-e89b27dfde50"
+        },
+        {
+          "type": "heading_3",
+          "text": "✅ Best Practice Email Universali",
+          "blockId": "30b2208f-6c7a-810a-a217-ca0cf734cb00"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Personalizzazione: Usa nome, riferisci risposte quiz",
+          "blockId": "30b2208f-6c7a-8145-a485-c38da84b395b"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Mobile-First: 70%+ aperture da mobile",
+          "blockId": "30b2208f-6c7a-81cc-8eae-efdff8665bae"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Orari invio: Martedì-Giovedì, 10-11 o 18-19",
+          "blockId": "30b2208f-6c7a-813b-97e7-ced59fd4cd49"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Oggetto: 40-50 caratteri, curiosità + beneficio",
+          "blockId": "30b2208f-6c7a-81d7-8576-c4a6ff4ce534"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Prova sociale: Testimonianze, numeri, trasformazioni",
+          "blockId": "30b2208f-6c7a-81ba-a0e2-e6f61b741104"
+        },
+        {
+          "type": "divider",
+          "text": "",
+          "blockId": "30b2208f-6c7a-811c-a109-feac8fc1cd45"
+        }
+      ]
+    },
+    {
+      "title": "8. Framework Pubblicità a Pagamento",
+      "type": "h1",
+      "content": [
+        {
+          "type": "heading_3",
+          "text": "📱 Strategia Meta Ads (Facebook & Instagram)",
+          "blockId": "30b2208f-6c7a-81b7-86f1-db8293bfa209"
+        },
+        {
+          "type": "callout",
+          "text": "Campagna 1: Traffico Freddo — Awareness\nObiettivo: Copertura + Brand Awareness · Budget: €50/gg\nPubblico: Donne 25-50, Italia, Interessi: Fitness, Nutrizione, Benessere\nCreativi: Video trasformazione, carosello prima/dopo",
+          "blockId": "30b2208f-6c7a-8138-8311-d68100ae1323"
+        },
+        {
+          "type": "callout",
+          "text": "Campagna 2: Traffico Freddo — Lead Generation\nObiettivo: Lead Generation · Budget: €70/gg\nPubblico: Donne 30-45, Italia, Comportamenti: Salute & Benessere\nCreativi: Landing page quiz funnel",
+          "blockId": "30b2208f-6c7a-8155-b4fb-e4dbb6ce0cf0"
+        },
+        {
+          "type": "callout",
+          "text": "Campagna 3: Traffico Tiepido — Consideration\nPubblico: Visitatori sito (30gg), visualizzatori video (50%+) · Budget: €40/gg\nCreativi: Vetrina prodotto, video testimonianze",
+          "blockId": "30b2208f-6c7a-81bc-9130-ef947a23e78e"
+        },
+        {
+          "type": "callout",
+          "text": "Campagna 4: Traffico Caldo — Conversione\nPubblico: Quiz completati, carrelli abbandonati, lista email · Budget: €60/gg\nCreativi: Offerta limitata, urgenza, bonus",
+          "blockId": "30b2208f-6c7a-81fe-b017-ef509a293c85"
+        },
+        {
+          "type": "heading_3",
+          "text": "🔍 Strategia Google Ads",
+          "blockId": "30b2208f-6c7a-8189-b270-c18ace0d50f8"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Campagna 1 — Keyword ad Alta Intenzione: €30/gg, Phrase match",
+          "blockId": "30b2208f-6c7a-8108-8429-c82e1fd28b0e"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Campagna 2 — Difesa Brand: €10/gg, Exact match (\"362gradi\")",
+          "blockId": "30b2208f-6c7a-81d0-b1bc-ca16c213150d"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "Campagna 3 — Targeting Competitor: €20/gg, Phrase match",
+          "blockId": "30b2208f-6c7a-8101-8593-e09788b6729c"
+        },
+        {
+          "type": "heading_3",
+          "text": "🏆 Benchmark Performance (Obiettivi)",
+          "blockId": "30b2208f-6c7a-812c-a9bf-f3117543f057"
+        },
+        {
+          "type": "bulleted_list_item",
+          "text": "CTR Target: 2-3% (Search), 1.5-2% (Social)",
+          "blockId": "30b2208f-6c7a-8113-96ef-e375401132ab"
+        }
+      ]
+    }
+  ],
+  "preface": [
+    {
+      "type": "paragraph",
+      "text": ""
+    },
+    {
+      "type": "callout",
+      "text": "362GRADI — Buyer Persona Analysis (Filtered Data)\nData Analysis: 16/02/2026 | Dataset: 287 Teachable Orders (excl. \"Inizia da qui\")"
+    },
+    {
+      "type": "divider",
+      "text": ""
+    }
+  ]
+}

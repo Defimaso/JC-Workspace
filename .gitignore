@@ -1,0 +1,39 @@
+# Progetti con repo GitHub propri — escludi
+362gradi/
+easyai/
+symplo/
+LinearityFX/
+MasoLab/
+MerryProject/
+Diario362/
+smarti-diet/
+defimaso-site/
+elite-longevity-protocol/
+smarti-diet-plan/
+cc-workspace/
+sara-stefanelli/
+InDubai/
+Guide/
+
+# Immagini pesanti (screenshot, PNG, JPEG)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+
+# File temporanei e cache
+node_modules/
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
+nul
+
+# Settings locali Claude Code
+.claude/
+
+# File di output/debug
+*.ps1

@@ -1,0 +1,138 @@
+=== HEADINGS ===
+
+# Stack Tecnologico
+# Repository & Deploy
+# Funnel di Acquisizione
+# Supabase & Edge Functions
+### Edge Function: send-quiz-email
+### Edge Function: purchase-webhook
+### Edge Function: notify-telegram
+### Database Tables
+### Environment Variables (server-side, Supabase secrets)
+### Environment Variables (client-side, .env)
+# 6 Profili Psicologici
+# Sito Web — Pagine
+# Email Marketing
+### Email Transazionale (post-quiz)
+### Nurturing Sequence (MailerLite)
+# Meta Ads
+# Sistema 362 Premium (Post-Call)
+### 6 Profili Comportamentali
+### 4 Messaggi WhatsApp
+# Task — Completati
+
+
+=== TO-DO ITEMS ===
+
+[X] Sito web completo (homepage + landing + blog + guide)
+[X] Quiz interattivo (veloce 3 dom. + approfondito 30 dom.)
+[X] 6 profili psicologici con copy personalizzato
+[X] Email transazionale post-quiz (Resend)
+[X] 24 articoli blog evidence-based con infografiche
+[X] 27 cover + 30 immagini interne branded
+[X] Integrazione MailerLite (subscriber + gruppi)
+[X] 30 email nurturing personalizzate (HTML pronte)
+[X] Meta Pixel + GA4 tracking + Conversions API
+[X] Supabase Edge Functions (quiz email, purchase webhook)
+[X] Sistema 362 Premium (analisi call + messaggi WhatsApp)
+[X] 3 creativita ads (Feed + Story)
+[X] Buyer Persona Report completo
+[X] App Diario (diario.362gradi.ae)
+[X] Bot Telegram creato e testato
+
+
+=== CALLOUTS ===
+
+🔥 362gradi — nutrizione · allenamento · psicologia
+Dominio: 362gradi.ae | Target: Donne italiane 25+ | Sede: Dubai, UAE
+⚡ Supabase gestisce database (quiz_leads, purchases) + 2 Edge Functions per email e webhook acquisti.
+🎯 Meta Ads → Landing /landing → Quiz (3 o 30 domande) → Profilazione (6 profili) → Email Guida (Resend) + MailerLite → Telegram notifica → Nurturing 5 email → Call Calendly → Follow-up WhatsApp (362 Premium) → Vendita
+⚠️ REGOLA: Il cliente non deve MAI sentirsi "profilato", ma "capito". Mai nominare il profilo nel copy. Mai usare linguaggio da segmentazione. Parlare ai bisogni reali in modo naturale.
+
+
+=== TABELLE ===
+
+Trovate 7 tabelle (servono child blocks per il contenuto)
+Tabella 1: 3 colonne x con header
+Tabella 2: 2 colonne x con header
+Tabella 3: 4 colonne x con header
+Tabella 4: 3 colonne x con header
+Tabella 5: 3 colonne x con header
+Tabella 6: 2 colonne x senza header
+Tabella 7: 3 colonne x con header
+
+
+=== LISTE ===
+
+Liste puntate:
+  • Eventi: new_registration | whatsapp_click | calendly_click
+  • CORS: 362gradi.ae, www.362gradi.ae, diario.362gradi.ae
+  • Frontend: tracking.ts (fire-and-forget) per WhatsApp/Calendly click + AuthContext.tsx (Diario362) per registrazione
+  • Secrets: TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID (489480689)
+  • Nota: Calendly free plan non ha webhook, si traccia solo il click (non la prenotazione effettiva)
+  • quiz_leads: email, name, need_profile, profile_name, hook_choice, source, quiz_mode, all_answers, email_sent, resend_email_id, utm_*
+  • purchases: user_email, user_name, product_id, product_name, total_value, currency, teachable_order_id
+  • RESEND_API_KEY — API key Resend per invio email
+  • SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY — accesso DB server-side
+  • MAILERLITE_API_KEY — per aggiungere subscriber dopo quiz
+  ... (21 altri)
+
+Liste numerate:
+  1. Meta Ads (Instagram/Facebook) — Budget $7/day, target donne italiane 25+
+  2. Landing Page (/landing) — Quiz interattivo, zero distrazioni
+  3. Quiz — Veloce (3 dom, 30 sec) o Approfondito (30 dom, 5 min)
+  4. Profilazione psicologica — 6 profili Chase Hughes (interno, mai comunicato)
+  5. Email Guida Personalizzata (Resend) + Aggiunta MailerLite + Notifica Telegram
+  6. Nurturing sequence — 5 email personalizzate per profilo (giorni 2-14)
+  7. Call gratuita Calendly (20-30 min)
+  8. Follow-up WhatsApp personalizzato (Sistema 362 Premium — 4 messaggi)
+  9. Vendita percorso
+
+
+=== PARAGRAFI ===
+
+Trigger: quiz completato. Salva lead su quiz_leads, invia email guida via Resend, aggiunge subscriber a MailerLite group con campo need_profile.
+Trigger: Teachable sale.created webhook. Salva acquisto su purchases, invia evento Purchase a Meta Conversion API (v21.0) + GA4 Measurement Protocol.
+Trigger: click WhatsApp, click Calendly, registrazione Diario 362. Invia notifica al bot Telegram @JeanClaudeCodeNotifyBot.
+Follow-up WhatsApp personalizzato dopo la call conoscitiva. Analisi profilo comportamentale + 4 messaggi WhatsApp automatici.
+
+
+=== TUTTE LE LISTE PUNTATE ===
+
+• Eventi: new_registration | whatsapp_click | calendly_click
+• CORS: 362gradi.ae, www.362gradi.ae, diario.362gradi.ae
+• Frontend: tracking.ts (fire-and-forget) per WhatsApp/Calendly click + AuthContext.tsx (Diario362) per registrazione
+• Secrets: TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID (489480689)
+• Nota: Calendly free plan non ha webhook, si traccia solo il click (non la prenotazione effettiva)
+• quiz_leads: email, name, need_profile, profile_name, hook_choice, source, quiz_mode, all_answers, email_sent, resend_email_id, utm_*
+• purchases: user_email, user_name, product_id, product_name, total_value, currency, teachable_order_id
+• RESEND_API_KEY — API key Resend per invio email
+• SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY — accesso DB server-side
+• MAILERLITE_API_KEY — per aggiungere subscriber dopo quiz
+• META_CONVERSION_API_TOKEN — per Conversions API (purchase tracking)
+• GA4_API_SECRET — per GA4 Measurement Protocol (purchase tracking)
+• VITE_QUIZ_EMAIL_URL — URL Edge Function send-quiz-email
+• VITE_SUPABASE_ANON_KEY — chiave pubblica per auth Edge Function
+• VITE_GA_MEASUREMENT_ID = G-CEWN3FBXC7
+• VITE_META_PIXEL_ID = 1416809776600724
+• Invio: Resend API da send@362gradi.ae
+• Contenuto: Guida personalizzata per profilo + CTA call + link app
+• Trigger: Completamento quiz (immediata)
+• 30 email personalizzate (5 email × 6 profili)
+• 6 automazioni attive — una per profilo, 5 email ciascuna ✅
+• Significance: 179633948743173721 | Intelligence: 179729727523653612 | Approval: 179729727945180494
+• Power: 179729726450959752 | Pity: 179729726976296590 | Acceptance: 179729724850833052
+• Struttura: Trigger (Quiz Leads group) → Condition (need_profile) → 5× (delay 2gg + email) → Exit
+• Mittente: Ilaria · 362gradi (info@362gradi.ae) | Subject e HTML personalizzati per profilo
+• Procrastinatore → Urgenza + micro-azione immediata
+• Vittima → Validazione + differenziazione metodo
+• Maniaco → Struttura + piano dettagliato
+• Disorganizzato → Semplicita + sistema automatico
+• Sfiduciato → Empatia + prova sociale forte
+• Pigro → Realta + minimo sforzo efficace
+
+
+=== RIEPILOGO ===
+Totale blocks: 100
+Has more: true (ci sono altri blocchi non caricati)
+To-do completati: 15/15

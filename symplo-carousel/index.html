@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symplo — Carosello Esempio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #050709;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      padding: 40px 20px;
+      gap: 32px;
+    }
+
+    h1 {
+      color: #a0a0b0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Carousel wrapper */
+    .carousel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 20px 10px;
+      scrollbar-width: none;
+      max-width: 100vw;
+    }
+    .carousel::-webkit-scrollbar { display: none; }
+
+    /* Single slide — 1080x1080 scaled */
+    .slide {
+      flex-shrink: 0;
+      width: 380px;
+      height: 380px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      background: hsl(220, 15%, 5%);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px;
+    }
+
+    /* Glow accents */
+    .glow-tl {
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(29,233,122,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .glow-br {
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(91,110,245,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .glow-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(29,233,122,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Brand logo top */
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+    }
+    .brand span {
+      color: #1de97a;
+    }
+
+    /* Slide number */
+    .slide-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      position: absolute;
+      top: 32px; right: 32px;
+      z-index: 2;
+    }
+
+    /* Content area */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(29,233,122,0.12);
+      border: 1px solid rgba(29,233,122,0.25);
+      color: #1de97a;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .tag.purple {
+      background: rgba(91,110,245,0.12);
+      border-color: rgba(91,110,245,0.3);
+      color: #8b9ef7;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    h2 em {
+      font-style: normal;
+      color: #1de97a;
+    }
+
+    h2 .purple-text {
+      color: #8b9ef7;
+    }
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* Bullet points */
+    .bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bullet {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .bullet-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #1de97a;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .bullet-dot.purple { background: #8b9ef7; }
+    .bullet-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+    }
+    .bullet-text strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Stack tool card */
+    .tool-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tool-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(29,233,122,0.12);
+      border: 1px solid rgba(29,233,122,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .tool-icon.purple-icon {
+      background: rgba(91,110,245,0.12);
+      border-color: rgba(91,110,245,0.2);
+    }
+    .tool-info { flex: 1; }
+    .tool-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .tool-desc {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+
+    /* Big number */
+    .big-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 80px;
+      font-weight: 800;
+      color: rgba(29,233,122,0.12);
+      line-height: 1;
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+    }
+
+    /* CTA slide */
+    .cta-url {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1de97a;
+      background: rgba(29,233,122,0.1);
+      border: 1px solid rgba(29,233,122,0.3);
+      border-radius: 8px;
+      padding: 10px 16px;
+      width: fit-content;
+    }
+
+    /* Bottom bar */
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+    .bottom-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+    }
+    .bottom-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(29,233,122,0.4);
+    }
+
+    /* Divider line */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #1de97a, transparent);
+      border-radius: 2px;
+    }
+
+    /* Nav dots */
+    .nav-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dot.active {
+      background: #1de97a;
+      width: 20px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Symplo — Carosello Esempio</h1>
+
+  <div class="carousel">
+
+    <!-- SLIDE 1 — COVER -->
+    <div class="slide">
+      <div class="glow-tl"></div>
+      <div class="glow-br"></div>
+      <div class="brand">Symplo<span>.ai</span></div>
+      <span class="slide-num">1 / 6</span>
+      <div class="content">
+        <div class="tag">AI Stack</div>
+        <h2>Stai usando l'AI nel <em>modo sbagliato</em></h2>
+        <p>Il problema non è l'AI. È che stai usando un solo tool invece di un sistema.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="bottom">
+        <span class="bottom-brand">symplo.ai</span>
+        <div class="bottom-dot"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — PROBLEMA -->
+    <div class="slide">
+      <div class="glow-tl"></div>
+      <div class="brand">Symplo<span>.ai</span></div>
+      <span class="slide-num">2 / 6</span>
+      <div class="content">
+        <div class="tag purple">Il problema</div>
+        <h2>ChatGPT <span class="purple-text">non è</span> uno stack</h2>
+        <p>Un tool da solo non basta. Serve un sistema di tool connessi che lavorano insieme per il tuo business.</p>
+      </div>
+      <div class="bottom">
+        <span class="bottom-brand">symplo.ai</span>
+        <div class="bottom-dot"></div>
+      </div>
+      <div class="big-num">!</div>
+    </div>
+
+    <!-- SLIDE 3 — SOLUZIONE -->
+    <div class="slide">
+      <div class="glow-center"></div>
+      <div class="brand">Symplo<span>.ai</span></div>
+      <span class="slide-num">3 / 6</span>
+      <div class="content">
+        <div class="tag">La soluzione</div>
+        <h2>Il tuo <em>AI Stack</em> in 4 aree</h2>
+        <div class="bullets">
+          <div class="bullet">
+            <div class="bullet-dot"></div>
+            <div class="bullet-text"><strong>Contenuti</strong> — scrivi, crea, pubblica</div>
+          </div>
+          <div class="bullet">
+            <div class="bullet-dot"></div>
+            <div class="bullet-text"><strong>Automazioni</strong> — fai girare tutto senza toccare niente</div>
+          </div>
+          <div class="bullet">
+            <div class="bullet-dot purple"></div>
+            <div class="bullet-text"><strong>Clienti</strong> — CRM, follow-up, onboarding</div>
+          </div>
+          <div class="bullet">
+            <div class="bullet-dot purple"></div>
+            <div class="bullet-text"><strong>Analytics</strong> — dati che capisce chiunque</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <span class="bottom-brand">symplo.ai</span>
+        <div class="bottom-dot"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 — TOOL ESEMPIO -->
+    <div class="slide">
+      <div class="glow-tl"></div>
+      <div class="brand">Symplo<span>.ai</span></div>
+      <span class="slide-num">4 / 6</span>
+      <div class="content">
+        <div class="tag">Esempio Stack</div>
+        <h2>Stack per <em>coach</em> e formatori</h2>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+          <div class="tool-card">
+            <div class="tool-icon">✍️</div>
+            <div class="tool-info">
+              <div class="tool-name">Jasper</div>
+              <div class="tool-desc">Contenuti & copywriting</div>
+            </div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-icon">⚡</div>
+            <div class="tool-info">
+              <div class="tool-name">Make</div>
+              <div class="tool-desc">Automazioni & workflow</div>
+            </div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-icon purple-icon">🎬</div>
+            <div class="tool-info">
+              <div class="tool-name">HeyGen</div>
+              <div class="tool-desc">Video & clone AI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <span class="bottom-brand">symplo.ai</span>
+        <div class="bottom-dot"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 — RISULTATO -->
+    <div class="slide">
+      <div class="glow-br"></div>
+      <div class="brand">Symplo<span>.ai</span></div>
+      <span class="slide-num">5 / 6</span>
+      <div class="content">
+        <div class="tag">Il risultato</div>
+        <h2>Risparmia <em>20h</em> a settimana</h2>
+        <p>Con lo stack giusto, automatizzi contenuti, follow-up e analytics. Ti rimane solo la parte che conta: la strategia.</p>
+        <div class="divider"></div>
+        <p style="color:rgba(255,255,255,0.35);font-size:11px;">Lo stack cambia in base al tuo settore. Non esiste una soluzione uguale per tutti.</p>
+      </div>
+      <div class="bottom">
+        <span class="bottom-brand">symplo.ai</span>
+        <div class="bottom-dot"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 — CTA -->
+    <div class="slide">
+      <div class="glow-tl"></div>
+      <div class="glow-br"></div>
+      <div class="brand">Symplo<span>.ai</span></div>
+      <span class="slide-num">6 / 6</span>
+      <div class="content" style="align-items:center;text-align:center;">
+        <div class="tag">Gratis • 2 minuti</div>
+        <h2>Scopri il tuo <em>AI Stack</em> ideale</h2>
+        <p>Quiz personalizzato in base al tuo settore e obiettivi.</p>
+        <div class="cta-url">→ symplo.ai/quiz</div>
+      </div>
+      <div class="bottom">
+        <span class="bottom-brand">symplo.ai</span>
+        <div class="bottom-dot"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="nav-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Nutritipi — 362gradi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1A535C;
+    background: #fff;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+
+  /* ============ COVER PAGE ============ */
+  .cover {
+    width: 210mm;
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(160deg, #1A535C 0%, #2B7A78 40%, #4ECDC4 100%);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(78, 205, 196, 0.15);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(255, 107, 107, 0.08);
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px;
+  }
+
+  .cover-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  .cover-line {
+    width: 80px;
+    height: 3px;
+    background: #FF6B6B;
+    margin: 0 auto 40px;
+    border-radius: 2px;
+  }
+
+  .cover h1 {
+    font-size: 56px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 60px;
+    max-width: 500px;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    padding: 10px 28px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    color: rgba(255,255,255,0.8);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* ============ PAGES ============ */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 36px 50px 48px;
+    page-break-after: always;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #E8F5F3;
+  }
+
+  .page-header-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4ECDC4;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .page-header-title {
+    font-size: 11px;
+    color: #8AABA7;
+    font-weight: 500;
+  }
+
+  .page-footer {
+    position: absolute;
+    bottom: 24px;
+    left: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #E8F5F3;
+    font-size: 9px;
+    color: #8AABA7;
+  }
+
+  /* ============ SECTION TITLES ============ */
+  .section-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1A535C;
+    margin-bottom: 8px;
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+    border-radius: 2px;
+    margin-bottom: 22px;
+  }
+
+  /* ============ INTRO TEXT ============ */
+  .intro-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #2D5F5A;
+    margin-bottom: 22px;
+  }
+
+  .intro-text strong {
+    color: #1A535C;
+    font-weight: 600;
+  }
+
+  .bullet-list {
+    margin: 14px 0 22px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .bullet-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #2D5F5A;
+  }
+
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ECDC4;
+  }
+
+  /* ============ ATTENTION BOXES ============ */
+  .attention-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1A535C;
+    margin-bottom: 20px;
+  }
+
+  .attention-card {
+    background: #F7FFFE;
+    border-left: 4px solid #4ECDC4;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .attention-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A535C;
+    margin-bottom: 6px;
+  }
+
+  .attention-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #3D6B66;
+  }
+
+  .attention-card.coral {
+    border-left-color: #FF6B6B;
+    background: #FFF8F8;
+  }
+
+  .attention-card.green {
+    border-left-color: #7CB518;
+    background: #F9FDF3;
+  }
+
+  .callout-box {
+    background: linear-gradient(135deg, #F0FFFE 0%, #F7FFFE 100%);
+    border: 1px solid #D4F0ED;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+
+  .callout-box p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #2D5F5A;
+  }
+
+  .callout-box strong {
+    color: #FF6B6B;
+  }
+
+  /* ============ NUTRITIPO CARDS ============ */
+  .nutritipo-header {
+    border-radius: 14px;
+    padding: 22px 28px;
+    margin-bottom: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nutritipo-header::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .nutritipo-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 2px;
+  }
+
+  .nutritipo-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  /* Color variants */
+  .nt-1 { background: linear-gradient(135deg, #E8524A 0%, #FF6B6B 100%); }
+  .nt-1 .nutritipo-number { color: #FFD4D4; }
+  .nt-2 { background: linear-gradient(135deg, #D4890A 0%, #F5A623 100%); }
+  .nt-2 .nutritipo-number { color: #FDE8C4; }
+  .nt-3 { background: linear-gradient(135deg, #1A535C 0%, #2B7A78 100%); }
+  .nt-3 .nutritipo-number { color: #A8DDD8; }
+  .nt-4 { background: linear-gradient(135deg, #2B8A3E 0%, #7CB518 100%); }
+  .nt-4 .nutritipo-number { color: #D4EDBA; }
+  .nt-5 { background: linear-gradient(135deg, #6741D9 0%, #9775FA 100%); }
+  .nt-5 .nutritipo-number { color: #D4C4F7; }
+  .nt-6 { background: linear-gradient(135deg, #4ECDC4 0%, #45B7D1 100%); }
+  .nt-6 .nutritipo-number { color: #C4F0EC; }
+
+  /* Profile description */
+  .profile-section {
+    margin-bottom: 18px;
+  }
+
+  .profile-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A535C;
+    margin-bottom: 8px;
+  }
+
+  .profile-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #3D6B66;
+  }
+
+  /* Method section */
+  .method-section {
+    margin-bottom: 14px;
+  }
+
+  .method-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A535C;
+    margin-bottom: 5px;
+  }
+
+  .method-problem {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #FF6B6B;
+    margin-bottom: 16px;
+  }
+
+  .protocol-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+
+  .protocol-dot {
+    width: 9px;
+    height: 9px;
+    min-width: 9px;
+    border-radius: 50%;
+    margin-top: 5px;
+  }
+
+  .protocol-dot.c1 { background: #FF6B6B; }
+  .protocol-dot.c2 { background: #F5A623; }
+  .protocol-dot.c3 { background: #2B7A78; }
+  .protocol-dot.c4 { background: #7CB518; }
+  .protocol-dot.c5 { background: #9775FA; }
+  .protocol-dot.c6 { background: #45B7D1; }
+
+  .protocol-content {
+    flex: 1;
+  }
+
+  .protocol-content strong {
+    font-size: 14px;
+    color: #1A535C;
+    display: inline;
+  }
+
+  .protocol-content p {
+    font-size: 13px;
+    line-height: 1.58;
+    color: #3D6B66;
+    display: inline;
+  }
+
+  /* Principle box */
+  .principle-box {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+
+  .principle-box.bg1 { background: #FFF5F5; border-left: 4px solid #FF6B6B; }
+  .principle-box.bg2 { background: #FFF9F0; border-left: 4px solid #F5A623; }
+  .principle-box.bg3 { background: #F0FFFE; border-left: 4px solid #2B7A78; }
+  .principle-box.bg4 { background: #F6FFF0; border-left: 4px solid #7CB518; }
+  .principle-box.bg5 { background: #F8F5FF; border-left: 4px solid #9775FA; }
+  .principle-box.bg6 { background: #F0FCFF; border-left: 4px solid #45B7D1; }
+
+  .principle-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .principle-label.t1 { color: #FF6B6B; }
+  .principle-label.t2 { color: #F5A623; }
+  .principle-label.t3 { color: #2B7A78; }
+  .principle-label.t4 { color: #7CB518; }
+  .principle-label.t5 { color: #9775FA; }
+  .principle-label.t6 { color: #45B7D1; }
+
+  .principle-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #2D5F5A;
+    font-style: italic;
+  }
+
+  /* Assessment page */
+  .assessment-box {
+    background: linear-gradient(135deg, #F0FFFE 0%, #E8F5F3 100%);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-top: 18px;
+  }
+
+  .assessment-box h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A535C;
+    margin-bottom: 10px;
+  }
+
+  .assessment-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #2D5F5A;
+  }
+
+  .assessment-box strong {
+    color: #1A535C;
+  }
+
+  @media print {
+    body { margin: 0; }
+    .page { margin: 0; }
+    .cover { margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="cover-content">
+    <div class="cover-logo">362gradi</div>
+    <div class="cover-line"></div>
+    <h1>I Nutritipi</h1>
+    <p class="cover-subtitle">Categorie comportamentali e metodi di intervento</p>
+    <div class="cover-line" style="margin-top: 40px;"></div>
+    <div class="cover-badge">Documento operativo ad uso interno del team</div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — INTRODUZIONE ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <h2 class="section-title">Introduzione</h2>
+  <div class="section-divider"></div>
+
+  <p class="intro-text">
+    Nella mia pratica clinica come nutrizionista e psicologa ho individuato <strong>sei categorie comportamentali ricorrenti</strong> tra i clienti che si rivolgono a noi per un percorso di nutrizione e cambiamento dello stile di vita. Le ho chiamate <strong>Nutritipi</strong>.
+  </p>
+  <p class="intro-text">
+    L'idea nasce da una convinzione: <strong>non esiste un modo uguale per tutti</strong>. Due persone con lo stesso obiettivo possono reagire in modo completamente diverso allo stesso piano, alla stessa indicazione, allo stesso stimolo. Per questo ho voluto costruire un approccio il più possibile mirato e strategico, che ci permetta di riconoscere fin da subito il profilo del cliente e di adattare il nostro intervento di conseguenza — facilitando l'azione e, di fatto, i risultati.
+  </p>
+  <p class="intro-text">Per ogni Nutritipo troverete:</p>
+  <ul class="bullet-list">
+    <li>La descrizione del profilo comportamentale</li>
+    <li>Il metodo di intervento consigliato con protocollo operativo e principio psicologico di riferimento</li>
+  </ul>
+  <p class="intro-text">
+    L'obiettivo di questo documento è dotare tutto il team di una mappa condivisa per riconoscere i pattern dei clienti fin dalle prime sessioni e applicare strategie di intervento coerenti con il profilo individuato.
+  </p>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 2</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 3 — ASPETTI + ASSESSMENT ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <h2 class="attention-title">Aspetti a cui fare attenzione</h2>
+  <div class="section-divider"></div>
+
+  <div class="attention-card">
+    <h4>Sovrapposizioni tra categorie</h4>
+    <p>Queste categorie <strong>non sono mutuamente esclusive</strong>. Lo Sfiduciato può sembrare un Procrastinatore, la Vittima degli eventi può mascherare pigrizia, il Maniaco del controllo quando "crolla" può sembrare un Disorganizzato. Dobbiamo pensare a queste categorie come a un <strong>tratto dominante</strong> con possibili tratti secondari.</p>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>Attenzione:</strong> dobbiamo prevedere nel nostro metodo un momento diagnostico che distingua tratto dominante e tratti secondari, altrimenti rischiamo di applicare il protocollo sbagliato.</p>
+  </div>
+
+  <div class="attention-card coral">
+    <h4>Possibile categoria mancante</h4>
+    <p>Nella tassonomia attuale non compare una categoria per chi ha un <strong>problema emotivo primario</strong> (emotional eater puro, chi usa il cibo come regolazione affettiva senza rientrare nei profili descritti). Dobbiamo valutare se aggiungerla come settimo Nutritipo oppure se la consideriamo una dimensione trasversale.</p>
+  </div>
+
+  <div class="attention-card green">
+    <h4>Punto di forza del nostro approccio</h4>
+    <p>Il fatto che il nostro team integri competenze sia nutrizionali che psicologiche ci permette di lavorare su entrambi i piani simultaneamente. Il metodo deve sfruttare esplicitamente questo <strong>doppio livello</strong> di intervento in ogni Nutritipo.</p>
+  </div>
+
+  <div class="assessment-box">
+    <h3>Assessment iniziale (trasversale a tutti i Nutritipi)</h3>
+    <p>Per tutte le categorie, dobbiamo prevedere un <strong>assessment iniziale</strong> (anche un questionario breve) che identifichi il profilo dominante e quello secondario, e un <strong>momento di psicoeducazione</strong> in cui condividiamo con il cliente il suo profilo. Rendere la persona consapevole del proprio pattern è già metà dell'intervento — a patto che venga fatto senza giudizio, come mappa, non come etichetta.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 3</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 4 — NUTRITIPO 1: IL PROCRASTINATORE ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <div class="nutritipo-header nt-1">
+    <div class="nutritipo-number">Nutritipo 01</div>
+    <div class="nutritipo-name">Il Procrastinatore</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="profile-label">Descrizione del profilo</div>
+    <p class="profile-text">
+      È una persona che rimanda sempre: o perché aspetta il momento giusto, o perché non ha un obiettivo chiaro, o perché aspetta la motivazione ma non si decide mai. Non pianifica, ha le idee poco chiare, parla al condizionale: "dovrei dimagrire", "dovrei iniziare" — ma prima di decidere un obiettivo e una strategia passano anni. Magari passa del tempo a informarsi per avere l'impressione di agire, ma di fatto spesso non approfondisce e non agisce.
+    </p>
+  </div>
+
+  <div class="method-section">
+    <div class="method-title">Metodo: "Micro-decisione forzata"</div>
+    <div class="method-problem">Problema centrale: paralisi decisionale mascherata da raccolta informazioni.</div>
+
+    <div class="protocol-item">
+      <div class="protocol-dot c1"></div>
+      <div class="protocol-content">
+        <strong>Sessione zero con deadline operativa. </strong>
+        <p>Non dobbiamo far uscire il cliente dal primo incontro senza almeno UNA azione concreta da fare entro 48 ore. Il Procrastinatore ha bisogno che qualcuno chiuda il ciclo decisionale per lui, almeno all'inizio.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c1"></div>
+      <div class="protocol-content">
+        <strong>Eliminare la fase di "studio". </strong>
+        <p>Dobbiamo vietare esplicitamente di informarsi ulteriormente come compito. Il suo compito è fare, non capire. La comprensione arriva dopo l'azione.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c1"></div>
+      <div class="protocol-content">
+        <strong>Linguaggio prescrittivo. </strong>
+        <p>Trasformare ogni condizionale in indicativo presente. "Dovrei" → "Quando inizi?" — non come provocazione ma come reframing sistematico.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c1"></div>
+      <div class="protocol-content">
+        <strong>Obiettivi a 2 settimane massimo, mai a 3-6 mesi. </strong>
+        <p>L'orizzonte lungo è il suo alibi.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c1"></div>
+      <div class="protocol-content">
+        <strong>Check-in brevi e frequenti. </strong>
+        <p>Anche via messaggio, per mantenere una pressione gentile. Ha bisogno di accountability esterna finché non interiorizza il ciclo azione → risultato → motivazione.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-box bg1">
+    <div class="principle-label t1">Principio psicologico</div>
+    <p class="principle-text">La motivazione segue l'azione, non la precede. Questo cliente aspetta la motivazione per agire — dobbiamo invertire il circuito.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 4</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 5 — NUTRITIPO 2: LA VITTIMA DEGLI EVENTI ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <div class="nutritipo-header nt-2">
+    <div class="nutritipo-number">Nutritipo 02</div>
+    <div class="nutritipo-name">La Vittima degli Eventi</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="profile-label">Descrizione del profilo</div>
+    <p class="profile-text">
+      Se non riesce, è sempre colpa di qualcuno o di qualcosa. Non ha tempo, è la genetica, ingrassa solo se respira. Spesso è informatissima su metodi e fisiologia, sa argomentare le sue scuse, risponde sempre con un "sì MA". Tende a modificare le istruzioni che le vengono date perché sa cosa è meglio, ma non riesce ad avere risultati perché non si affida.
+    </p>
+  </div>
+
+  <div class="method-section">
+    <div class="method-title">Metodo: "Specchio e responsabilità progressiva"</div>
+    <div class="method-problem">Problema centrale: locus of control completamente esterno + identità costruita attorno all'impotenza.</div>
+
+    <div class="protocol-item">
+      <div class="protocol-dot c2"></div>
+      <div class="protocol-content">
+        <strong>Non sfidare le scuse frontalmente. </strong>
+        <p>È controproducente. Questo cliente è addestrato al dibattito e ci batterà ogni volta — e ogni vittoria dialettica rinforza il pattern. Accogliere, validare parzialmente, e poi spostare.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c2"></div>
+      <div class="protocol-content">
+        <strong>Tecnica dello "e quindi?". </strong>
+        <p>"Hai ragione, la genetica gioca un ruolo. E quindi, partendo da questo, cosa possiamo fare con quello che controlli?" Riconosciamo il vincolo, togliamo il potere alla scusa.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c2"></div>
+      <div class="protocol-content">
+        <strong>Diario delle eccezioni. </strong>
+        <p>Documentare le volte in cui ha avuto successo nonostante gli ostacoli. Costruisce evidenza interna contro la narrativa di impotenza.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c2"></div>
+      <div class="protocol-content">
+        <strong>Contratto di aderenza. </strong>
+        <p>Se modifica il piano, deve comunicarcelo prima e motivare il cambiamento. Non per controllarlo/a ma per rendere visibile il pattern.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c2"></div>
+      <div class="protocol-content">
+        <strong>Domanda chiave ricorrente. </strong>
+        <p>"Se questo ostacolo non esistesse, faresti quello che ti ho chiesto?" — spesso la risposta rivela che l'ostacolo è un pretesto.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c2"></div>
+      <div class="protocol-content">
+        <strong>Metrica brutale. </strong>
+        <p>Tracciare l'aderenza al piano in percentuale. I numeri non si discutono. Se ha seguito il 40% del piano, il risultato al 40% non è colpa della genetica.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-box bg2">
+    <div class="principle-label t2">Principio psicologico</div>
+    <p class="principle-text">Non possiamo togliergli l'identità di vittima (è una difesa): dobbiamo renderla progressivamente inutile mostrando che i risultati arrivano proporzionalmente alla responsabilità assunta.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 5</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 6 — NUTRITIPO 3: IL MANIACO DEL CONTROLLO ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <div class="nutritipo-header nt-3">
+    <div class="nutritipo-number">Nutritipo 03</div>
+    <div class="nutritipo-name">Il Maniaco del Controllo</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="profile-label">Descrizione del profilo</div>
+    <p class="profile-text">
+      Tende a ragionare in bianco e nero: o fa tutto bene o tanto vale non iniziare per niente. Deve avere tutto organizzato e schedulato altrimenti va in palla. Ha grandi aspettative e quando i risultati non le soddisfano spesso si scoraggia.
+    </p>
+  </div>
+
+  <div class="method-section">
+    <div class="method-title">Metodo: "Imperfezione strutturata"</div>
+    <div class="method-problem">Problema centrale: pensiero dicotomico + ansia da performance → cicli di iper-aderenza e crollo.</div>
+
+    <div class="protocol-item">
+      <div class="protocol-dot c3"></div>
+      <div class="protocol-content">
+        <strong>Inserire imperfezione nel piano fin dal giorno uno. </strong>
+        <p>Prevedere esplicitamente un pasto libero, una giornata senza tracking, un allenamento "al minimo". Non come concessione ma come parte integrante del metodo.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c3"></div>
+      <div class="protocol-content">
+        <strong>Range invece di numeri fissi. </strong>
+        <p>Non "1600 kcal" ma "1500-1700". Non "4 allenamenti" ma "3-5". Dà controllo (sceglie dentro il range) senza rigidità.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c3"></div>
+      <div class="protocol-content">
+        <strong>Esposizione graduata al "fallimento". </strong>
+        <p>Assegnare deliberatamente settimane in cui l'obiettivo è più basso del suo standard. "Questa settimana il tuo obiettivo è fare il 70%, non il 100%."</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c3"></div>
+      <div class="protocol-content">
+        <strong>Separare monitoraggio da giudizio. </strong>
+        <p>Può tracciare tutto quello che vuole, ma il dato è informazione, non verdetto. Lavorare sulla differenza tra osservare e valutare.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c3"></div>
+      <div class="protocol-content">
+        <strong>Gestione delle aspettative con dati reali. </strong>
+        <p>Mostrare curve di progresso realistiche (non lineari, con plateau e oscillazioni). Normalizzare la variabilità prima che la sperimenti.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-box bg3">
+    <div class="principle-label t3">Principio psicologico</div>
+    <p class="principle-text">Il controllo è la sua strategia di gestione dell'ansia. Non va eliminato, va reso flessibile. L'obiettivo è passare da "controllo rigido" a "controllo adattivo".</p>
+  </div>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 6</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 7 — NUTRITIPO 4: IL DISORGANIZZATO ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <div class="nutritipo-header nt-4">
+    <div class="nutritipo-number">Nutritipo 04</div>
+    <div class="nutritipo-name">Il Disorganizzato</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="profile-label">Descrizione del profilo</div>
+    <p class="profile-text">
+      Sembra che proprio non riesca a rispettare una semplice routine. Parte volenteroso ma ci mette molto a capire che l'intento non basta a raggiungere un risultato. Fa difficoltà a monitorare allenamenti e pasti e per questo l'esito appare casuale.
+    </p>
+  </div>
+
+  <div class="method-section">
+    <div class="method-title">Metodo: "Architettura ambientale"</div>
+    <div class="method-problem">Problema centrale: deficit di funzioni esecutive applicate alla salute (pianificazione, monitoraggio, inibizione).</div>
+
+    <div class="protocol-item">
+      <div class="protocol-dot c4"></div>
+      <div class="protocol-content">
+        <strong>Non dare un piano complesso. Mai. </strong>
+        <p>Una regola alla volta, massimo due. "Questa settimana l'unica cosa che fai è preparare la colazione la sera prima." Quando quella è automatica, aggiungiamo la prossima.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c4"></div>
+      <div class="protocol-content">
+        <strong>Sistemi esterni, non forza di volontà. </strong>
+        <p>Meal prep domenicale obbligatorio, allarmi sul telefono, vestiti da allenamento preparati la sera, app di tracking con reminder. Ha bisogno di meno decisioni da prendere in tempo reale.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c4"></div>
+      <div class="protocol-content">
+        <strong>Routine anchor. </strong>
+        <p>Agganciare ogni nuovo comportamento a qualcosa che già fa. "Dopo il caffè del mattino" → colazione sana. Non orari, ma trigger comportamentali.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c4"></div>
+      <div class="protocol-content">
+        <strong>Feedback visivo immediato. </strong>
+        <p>Un calendario cartaceo sul frigo con le X per ogni giorno in cui ha fatto la cosa. Il principio "don't break the chain" funziona particolarmente bene su questo profilo.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c4"></div>
+      <div class="protocol-content">
+        <strong>Ridurre le opzioni. </strong>
+        <p>Non un piano con 7 pranzi diversi. Tre opzioni, ruota. La varietà è nemica dell'automazione, e questo cliente ha bisogno di automatizzare.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-box bg4">
+    <div class="principle-label t4">Principio psicologico</div>
+    <p class="principle-text">Il problema non è motivazionale, è strutturale. L'ambiente deve fare il lavoro che il suo sistema esecutivo non riesce a fare. Con il tempo, la struttura esterna diventa abitudine interna.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 7</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 8 — NUTRITIPO 5: LO SFIDUCIATO ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <div class="nutritipo-header nt-5">
+    <div class="nutritipo-number">Nutritipo 05</div>
+    <div class="nutritipo-name">Lo Sfiduciato</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="profile-label">Descrizione del profilo</div>
+    <p class="profile-text">
+      Fa fatica a credere in se stesso e negli altri, prova ma non ci mette mai il 100% perché non ci crede fino in fondo. Spesso viene da una storia di tanti percorsi provati e abbandonati. Può arrivare a pensare che "ci sia qualcosa che non va in lui/lei" e che non sia possibile raggiungere risultati.
+    </p>
+  </div>
+
+  <div class="method-section">
+    <div class="method-title">Metodo: "Prove di efficacia accumulate"</div>
+    <div class="method-problem">Problema centrale: learned helplessness + identità di "persona che non ce la fa".</div>
+
+    <div class="protocol-item">
+      <div class="protocol-dot c5"></div>
+      <div class="protocol-content">
+        <strong>Primi 30 giorni: obiettivi sottodimensionati di proposito. </strong>
+        <p>Deve vincere. Subito. Ripetutamente. Il punto è spezzare la sequenza di fallimenti percepiti. Sottopromettere e sovradeliverare.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c5"></div>
+      <div class="protocol-content">
+        <strong>Archeologia dei percorsi passati. </strong>
+        <p>Ricostruire insieme cosa è andato storto. Spesso emerge che non era lui/lei il problema ma l'incompatibilità con il metodo. Rinarrare la storia trasforma "sono sbagliato/a" in "non avevo trovato il modo giusto".</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c5"></div>
+      <div class="protocol-content">
+        <strong>Creare uno spazio sicuro per il dubbio. </strong>
+        <p>"Se qualcosa non ti convince, se hai dubbi — dimmelo. Non è un fallimento, è informazione utile." E poi premiare ogni volta che lo fa.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c5"></div>
+      <div class="protocol-content">
+        <strong>Evidenze scritte di progresso. </strong>
+        <p>Non solo peso o misure, ma competenze acquisite, abitudini consolidate. Costruire un "portfolio di successi" consultabile nei momenti di sfiducia.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c5"></div>
+      <div class="protocol-content">
+        <strong>Mai chiedere il 100%. </strong>
+        <p>Chiedere il 70% e celebrare quando arriva all'80%. La pressione alla perfezione è il trigger della rinuncia per questo profilo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-box bg5">
+    <div class="principle-label t5">Principio psicologico</div>
+    <p class="principle-text">L'autoefficacia si costruisce con esperienze di mastery, non con incoraggiamento verbale. Le parole "ce la puoi fare" senza prove concrete sono vuote per questo profilo — servono fatti.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 8</span>
+  </div>
+</div>
+
+<!-- ============ PAGE 9 — NUTRITIPO 6: IL PIGRO ============ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">362gradi</span>
+    <span class="page-header-title">I Nutritipi — Documento operativo</span>
+  </div>
+
+  <div class="nutritipo-header nt-6">
+    <div class="nutritipo-number">Nutritipo 06</div>
+    <div class="nutritipo-name">Il Pigro</div>
+  </div>
+
+  <div class="profile-section">
+    <div class="profile-label">Descrizione del profilo</div>
+    <p class="profile-text">
+      Vuole tutto senza fare niente. Ogni cosa sembra troppo, cerca qualsiasi scorciatoia pur di raggiungere il risultato senza sforzo. Per questo spesso viene portato/a a spendere soldi su protocolli con pasti sostitutivi o percorsi rapidi, che però non portano a risultati duraturi.
+    </p>
+  </div>
+
+  <div class="method-section">
+    <div class="method-title">Metodo: "Costo reale e guadagno tangibile"</div>
+    <div class="method-problem">Problema centrale: analisi costi-benefici distorta + bassa tolleranza allo sforzo.</div>
+
+    <div class="protocol-item">
+      <div class="protocol-dot c6"></div>
+      <div class="protocol-content">
+        <strong>Confronto economico brutale. </strong>
+        <p>Quanto ha speso in pasti sostitutivi, integratori miracolosi, abbonamenti non usati? Mettere nero su bianco il costo reale della "scorciatoia". Il Pigro è un ottimizzatore, va ricalibrato.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c6"></div>
+      <div class="protocol-content">
+        <strong>Sfruttare la pigrizia, non combatterla. </strong>
+        <p>Il piano deve essere genuinamente il percorso a minor sforzo verso il risultato. Se il piano più efficace è anche il più facile, il Pigro aderisce.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c6"></div>
+      <div class="protocol-content">
+        <strong>Rendere lo sforzo invisibile. </strong>
+        <p>Camminare durante le telefonate, pasti pre-preparati che richiedono zero cottura, sostituzione di un solo alimento alla volta.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c6"></div>
+      <div class="protocol-content">
+        <strong>Reward immediato. </strong>
+        <p>Non lavora per ricompense a 3 mesi. Trovare metriche che migliorano in giorni (energia, sonno, gonfiore) e farle notare subito.</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c6"></div>
+      <div class="protocol-content">
+        <strong>Onestà radicale in fase iniziale. </strong>
+        <p>"Non esiste un percorso senza sforzo. Ma esiste un percorso con lo sforzo minimo necessario. Vuoi che lavoriamo su quello?"</p>
+      </div>
+    </div>
+    <div class="protocol-item">
+      <div class="protocol-dot c6"></div>
+      <div class="protocol-content">
+        <strong>Svelare il pattern. </strong>
+        <p>Rendere esplicito il ciclo scorciatoia → risultato rapido → perdita → frustrazione → nuova scorciatoia. Farglielo vedere come schema, non come serie di sfortune.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="principle-box bg6">
+    <div class="principle-label t6">Principio psicologico</div>
+    <p class="principle-text">Il Pigro non è stupido, è economico. Se gli dimostriamo che lo sforzo minimo strutturato batte la scorciatoia in termini di rapporto costo/risultato, cambia strategia. La chiave è rendere la costanza più conveniente dell'intermittenza.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>362gradi — Documento riservato</span>
+    <span>Pagina 9</span>
+  </div>
+</div>
+
+</body>
+</html>

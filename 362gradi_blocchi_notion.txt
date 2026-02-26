@@ -1,0 +1,131 @@
+═══════════════════════════════════════════════════════════════
+PAGINA 362GRADI - ELENCO COMPLETO BLOCCHI (100 blocchi totali)
+═══════════════════════════════════════════════════════════════
+
+  1. [callout               ] 362gradi — nutrizione · allenamento · psicologia
+Dominio: 362gradi.ae | Target: Donne italiane 25+
+  2. [divider               ] ────────────────────
+  3. [heading_1             ] Stack Tecnologico
+  4. [table                 ] [Table]
+  5. [divider               ] ────────────────────
+  6. [heading_1             ] Repository & Deploy
+  7. [table                 ] [Table]
+  8. [divider               ] ────────────────────
+  9. [heading_1             ] Funnel di Acquisizione
+ 10. [heading_1             ] Supabase & Edge Functions
+ 11. [callout               ] Supabase gestisce database (quiz_leads, purchases) + 2 Edge Functions per email
+ 12. [heading_3             ] Edge Function: send-quiz-email
+ 13. [paragraph             ] Trigger: quiz completato. Salva lead su quiz_leads, invia email guida via Resend
+ 14. [heading_3             ] Edge Function: purchase-webhook
+ 15. [paragraph             ] Trigger: Teachable sale.created webhook. Salva acquisto su purchases, invia notif
+ 16. [heading_3             ] Edge Function: notify-telegram
+ 17. [paragraph             ] Trigger: click WhatsApp, click Calendly, registrazione Diario 362. Invia notifica
+ 18. [bulleted_list_item    ] Eventi: new_registration | whatsapp_click | calendly_click
+ 19. [bulleted_list_item    ] CORS: 362gradi.ae, www.362gradi.ae, diario.362gradi.ae
+ 20. [bulleted_list_item    ] Frontend: tracking.ts (fire-and-forget) per WhatsApp/Calendly click + AuthContext
+ 21. [bulleted_list_item    ] Secrets: TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID (489480689)
+ 22. [bulleted_list_item    ] Nota: Calendly free plan non ha webhook, si traccia solo il click (non la partecip)
+ 23. [heading_3             ] Database Tables
+ 24. [bulleted_list_item    ] quiz_leads: email, name, need_profile, profile_name, hook_choice, source, quiz_type
+ 25. [bulleted_list_item    ] purchases: user_email, user_name, product_id, product_name, total_value, currency
+ 26. [heading_3             ] Environment Variables (server-side, Supabase secrets)
+ 27. [bulleted_list_item    ] RESEND_API_KEY — API key Resend per invio email
+ 28. [bulleted_list_item    ] SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY — accesso DB server-side
+ 29. [bulleted_list_item    ] MAILERLITE_API_KEY — per aggiungere subscriber dopo quiz
+ 30. [bulleted_list_item    ] META_CONVERSION_API_TOKEN — per Conversions API (purchase tracking)
+ 31. [bulleted_list_item    ] GA4_API_SECRET — per GA4 Measurement Protocol (purchase tracking)
+ 32. [heading_3             ] Environment Variables (client-side, .env)
+ 33. [bulleted_list_item    ] VITE_QUIZ_EMAIL_URL — URL Edge Function send-quiz-email
+ 34. [bulleted_list_item    ] VITE_SUPABASE_ANON_KEY — chiave pubblica per auth Edge Function
+ 35. [bulleted_list_item    ] VITE_GA_MEASUREMENT_ID = G-CEWN3FBXC7
+ 36. [bulleted_list_item    ] VITE_META_PIXEL_ID = 1416809776600724
+ 37. [divider               ] ────────────────────
+ 38. [callout               ] Meta Ads → Landing → Quiz (3 o 30 dom) → Profilazione (6 profili) → Email + Call
+ 39. [numbered_list_item    ] Meta Ads (Instagram/Facebook) — Budget $7/day, target donne italiane 25+
+ 40. [numbered_list_item    ] Landing Page (/landing) — Quiz interattivo, zero distrazioni
+ 41. [numbered_list_item    ] Quiz — Veloce (3 dom, 30 sec) o Approfondito (30 dom, 5 min)
+ 42. [numbered_list_item    ] Profilazione psicologica — 6 profili Chase Hughes (interno, mai comunicato)
+ 43. [numbered_list_item    ] Email Guida Personalizzata (Resend) + Aggiunta MailerLite + Notifica Telegram
+ 44. [numbered_list_item    ] Nurturing sequence — 5 email personalizzate per profilo (giorni 2-14)
+ 45. [numbered_list_item    ] Call gratuita Calendly (20-30 min)
+ 46. [numbered_list_item    ] Follow-up WhatsApp personalizzato (Sistema 362 Premium — 4 messaggi)
+ 47. [numbered_list_item    ] Vendita percorso
+ 48. [divider               ] ────────────────────
+ 49. [heading_1             ] 6 Profili Psicologici
+ 50. [callout               ] REGOLA: Il cliente non deve MAI sentirsi "profilato", ma "capito". Mai nomi intern
+ 51. [table                 ] [Table - 6 Profili Chase Hughes con copy personalizzato]
+ 52. [divider               ] ────────────────────
+ 53. [heading_1             ] Sito Web — Pagine
+ 54. [table                 ] [Table - Homepage, Landing, Blog, Guide, Policy pages]
+ 55. [divider               ] ────────────────────
+ 56. [heading_1             ] Email Marketing
+ 57. [heading_3             ] Email Transazionale (post-quiz)
+ 58. [bulleted_list_item    ] Invio: Resend API da send@362gradi.ae
+ 59. [bulleted_list_item    ] Contenuto: Guida personalizzata per profilo + CTA call + link app
+ 60. [bulleted_list_item    ] Trigger: Completamento quiz (immediata)
+ 61. [heading_3             ] Nurturing Sequence (MailerLite)
+ 62. [bulleted_list_item    ] 30 email personalizzate (5 email × 6 profili)
+ 63. [bulleted_list_item    ] 6 automazioni attive — una per profilo, 5 email ciascuna ✅
+ 64. [bulleted_list_item    ] Group IDs: Significance, Intelligence, Approval
+ 65. [bulleted_list_item    ] Group IDs: Power, Pity, Acceptance
+ 66. [bulleted_list_item    ] Struttura: Trigger (Quiz Leads group) → Condition (need_profile) → 5× (delay+email)
+ 67. [bulleted_list_item    ] Mittente: Ilaria · 362gradi (info@362gradi.ae) | Subject e HTML personalizzati
+ 68. [table                 ] [Table - Automazioni MailerLite con timing e trigger]
+ 69. [divider               ] ────────────────────
+ 70. [heading_1             ] Meta Ads
+ 71. [table                 ] [Table - Meta Ads campaigns e targeting]
+ 72. [divider               ] ────────────────────
+ 73. [heading_1             ] Sistema 362 Premium (Post-Call)
+ 74. [paragraph             ] Follow-up WhatsApp personalizzato dopo call. Analisi profilo comportamentale
+ 75. [heading_3             ] 6 Profili Comportamentali
+ 76. [bulleted_list_item    ] Procrastinatore → Urgenza + micro-azione immediata
+ 77. [bulleted_list_item    ] Vittima → Validazione + differenziazione metodo
+ 78. [bulleted_list_item    ] Maniaco → Struttura + piano dettagliato
+ 79. [bulleted_list_item    ] Disorganizzato → Semplicità + sistema automatico
+ 80. [bulleted_list_item    ] Sfiduciato → Empatia + prova sociale forte
+ 81. [bulleted_list_item    ] Pigro → Realtà + minimo sforzo efficace
+ 82. [heading_3             ] 4 Messaggi WhatsApp
+ 83. [table                 ] [Table - 4 messaggi WhatsApp personalizzati per profilo]
+ 84. [divider               ] ────────────────────
+ 85. [heading_1             ] Task — Completati
+ 86. [to_do                 ] Sito web completo (homepage + landing + blog + guide)
+ 87. [to_do                 ] Quiz interattivo (veloce 3 dom. + approfondito 30 dom.)
+ 88. [to_do                 ] 6 profili psicologici con copy personalizzato
+ 89. [to_do                 ] Email transazionale post-quiz (Resend)
+ 90. [to_do                 ] 24 articoli blog evidence-based con infografiche
+ 91. [to_do                 ] 27 cover + 30 immagini interne branded
+ 92. [to_do                 ] Integrazione MailerLite (subscriber + gruppi)
+ 93. [to_do                 ] 30 email nurturing personalizzate (HTML pronte)
+ 94. [to_do                 ] Meta Pixel + GA4 tracking + Conversions API
+ 95. [to_do                 ] Supabase Edge Functions (quiz email, purchase webhook)
+ 96. [to_do                 ] Sistema 362 Premium (analisi call + messaggi WhatsApp)
+ 97. [to_do                 ] 3 creatività ads (Feed + Story)
+ 98. [to_do                 ] Buyer Persona Report completo
+ 99. [to_do                 ] App Diario (diario.362gradi.ae)
+100. [to_do                 ] Bot Telegram creato e testato
+
+═══════════════════════════════════════════════════════════════
+
+RIASSUNTO STRUTTURA:
+- Callout (info banner): 2 blocchi
+- Heading 1: 9 blocchi (sezioni principali)
+- Heading 3: 7 blocchi (sottosezioni)
+- Divider (separatori): 11 blocchi
+- Table: 7 blocchi
+- Numbered list items: 8 blocchi
+- Bulleted list items: 22 blocchi
+- Paragraph: 2 blocchi
+- To-do items: 15 blocchi
+- TOTALE: 100 blocchi
+
+SEZIONI PRINCIPALI:
+1. Info 362gradi
+2. Stack Tecnologico
+3. Repository & Deploy
+4. Funnel di Acquisizione (Supabase, Edge Functions)
+5. 6 Profili Psicologici (Chase Hughes)
+6. Sito Web — Pagine
+7. Email Marketing (Transazionale + Nurturing MailerLite)
+8. Meta Ads
+9. Sistema 362 Premium (Post-Call WhatsApp)
+10. Task Completati (15 item)

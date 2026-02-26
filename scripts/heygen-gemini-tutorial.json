@@ -1,0 +1,52 @@
+{
+  "video_title": "Come usare Google Gemini - Tutorial per Principianti",
+  "platform": "HeyGen",
+  "language": "it-IT",
+  "estimated_duration": "3 minuti",
+  "total_characters": 4200,
+  "project": "Eezy AI - Video di esempio",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "scene_name": "Intro",
+      "duration_seconds": 20,
+      "background_slide": "Sfondo gradient blu scuro con logo Gemini al centro. In basso a destra, piccolo logo Eezy AI. Testo sovrimpresso: 'Come usare Google Gemini'",
+      "avatar_script": "Ciao! Oggi ti faccio vedere come usare Gemini, l'intelligenza artificiale di Google, per risparmiare tempo nella tua vita di tutti i giorni. Niente di complicato, te lo prometto. Tra tre minuti saprai già usarlo. Partiamo."
+    },
+    {
+      "scene_number": 2,
+      "scene_name": "Cos'e Gemini",
+      "duration_seconds": 30,
+      "background_slide": "Schermata con 3 icone affiancate: un cervello stilizzato (AI), una chat (conversazione), una lampadina (idee). Titolo in alto: 'Cos'e Gemini?'. Sfondo chiaro, pulito, stile minimal.",
+      "avatar_script": "Ok, ma cos'e Gemini? In parole semplici: e come avere un assistente personale disponibile ventiquattro ore su ventiquattro. Gli puoi chiedere di tutto: scrivere un'email, riassumere un documento, trovare idee per un progetto, spiegarti qualcosa che non hai capito. Funziona come una chat: tu scrivi una domanda, e lui ti risponde. La cosa bella? E gratis e ci puoi accedere direttamente con il tuo account Google. Quello che usi gia per Gmail o YouTube."
+    },
+    {
+      "scene_number": 3,
+      "scene_name": "Come accedere",
+      "duration_seconds": 30,
+      "background_slide": "Screenshot stilizzato della pagina gemini.google.com con frecce animate che indicano: 1) la barra URL con 'gemini.google.com', 2) il pulsante 'Accedi con Google'. Sfondo bianco con bordi arrotondati.",
+      "avatar_script": "Per iniziare, apri il browser e vai su gemini punto google punto com. Se sei gia collegato al tuo account Google, sei dentro. Altrimenti ti chiede di fare il login, come fai normalmente con Gmail. Una volta entrato, vedrai una schermata con una barra di testo in basso. Quella e la tua zona di lavoro. Li dentro scrivi quello che ti serve, e Gemini ti risponde in pochi secondi."
+    },
+    {
+      "scene_number": 4,
+      "scene_name": "Primo prompt",
+      "duration_seconds": 40,
+      "background_slide": "Simulazione di interfaccia chat Gemini. A sinistra il prompt dell'utente: 'Scrivimi 5 idee per una cena veloce con quello che ho in frigo: pollo, zucchine, pomodori e pasta'. A destra la risposta di Gemini con un elenco numerato. Stile pulito, font leggibile.",
+      "avatar_script": "Adesso scriviamo insieme la tua prima richiesta. Per esempio, immagina che sei a casa e non sai cosa cucinare. Scrivi nella barra: Scrivimi cinque idee per una cena veloce con quello che ho in frigo: pollo, zucchine, pomodori e pasta. Dai invio, e in due secondi Gemini ti da cinque ricette pronte. Questo e un esempio banale, ma pensa a quanto puo essere utile per il lavoro: scrivi riscrivimi questa email in modo piu professionale, oppure fammi un riassunto di questo testo. Piu sei specifico nella richiesta, migliore sara la risposta."
+    },
+    {
+      "scene_number": 5,
+      "scene_name": "Tips e Tricks",
+      "duration_seconds": 40,
+      "background_slide": "Tre card affiancate su sfondo scuro. Card 1: icona bersaglio + testo 'Sii specifico'. Card 2: icona frecce circolari + testo 'Chiedi modifiche'. Card 3: icona contesto + testo 'Dai contesto'. Titolo in alto: '3 Consigli d'Oro'.",
+      "avatar_script": "Prima di chiudere, tre consigli rapidi per ottenere risposte perfette. Numero uno: sii specifico. Invece di scrivere dammi idee per allenarmi, scrivi dammi un programma di allenamento da trenta minuti per fare a casa senza attrezzi. Piu dettagli dai, meglio e. Numero due: puoi sempre chiedere modifiche. Se la risposta non ti convince, scrivi rendilo piu semplice, oppure aggiungi piu dettagli. E una conversazione, non un colpo solo. Numero tre: dai contesto. Scrivi chi sei e perche ti serve. Per esempio: sono un personal trainer e devo scrivere un post per Instagram. Gemini capira molto meglio cosa vuoi."
+    },
+    {
+      "scene_number": 6,
+      "scene_name": "Outro",
+      "duration_seconds": 20,
+      "background_slide": "Sfondo gradient con logo Eezy AI grande al centro. Sotto: 'eezy.ai' come URL. Testo: 'Crea i tuoi video tutorial con l'AI'. Stile premium, colori brand Eezy AI.",
+      "avatar_script": "Ecco fatto! In tre minuti hai imparato a usare Gemini. Adesso tocca a te provarlo. E se vuoi creare video tutorial come questo per il tuo business, senza metterci la faccia e senza competenze tecniche, dai un'occhiata a Eezy AI. Ti aiutiamo a creare contenuti professionali con l'intelligenza artificiale. Ci vediamo al prossimo video!"
+    }
+  ]
+}
