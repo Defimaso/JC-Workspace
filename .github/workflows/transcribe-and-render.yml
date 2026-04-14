@@ -1,0 +1,106 @@
+name: Sottotitola Parlate da Drive
+
+on:
+  workflow_dispatch:
+    inputs:
+      drive_folder:
+        description: 'URL o ID cartella Google Drive con i video (deve essere condivisa con link)'
+        required: true
+        type: string
+      brand:
+        description: 'Brand'
+        required: false
+        type: choice
+        options:
+          - marco
+          - defimaso
+          - 362gradi
+        default: 'marco'
+      schedule_times:
+        description: 'Orari IT pubblicazione (es. 10:00,16:00). Vuoto = solo render, no IG'
+        required: false
+        type: string
+        default: '10:00,16:00'
+      schedule_date:
+        description: 'Data pubblicazione YYYY-MM-DD (vuoto = oggi)'
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Python + gdown
+        run: pip install gdown
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Download video da Google Drive
+        run: |
+          node scripts/drive-download.mjs \
+            --folder-id="${{ inputs.drive_folder }}" \
+            --output=tmp/videos
+
+      - name: Render sottotitoli
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CI: "true"
+        run: |
+          node scripts/render-spoken-stories.mjs \
+            --brand ${{ inputs.brand }} \
+            --input=tmp/videos \
+            --output=tmp/output
+
+      - name: Lista output
+        run: |
+          echo "=== Video generati ==="
+          ls -lh tmp/output/*-sub.mp4 2>/dev/null || echo "Nessun video generato!"
+          echo ""
+          echo "=== Tutti i file ==="
+          ls -lh tmp/output/ 2>/dev/null
+
+      - name: Upload su IG Schedule
+        if: inputs.schedule_times != ''
+        run: |
+          SCHED_DATE="${{ inputs.schedule_date }}"
+          if [ -z "$SCHED_DATE" ]; then
+            SCHED_DATE=$(date -u +%Y-%m-%d)
+          fi
+          node scripts/upload-spoken-to-ig.mjs \
+            --input=tmp/output \
+            --brand=${{ inputs.brand }} \
+            --time=${{ inputs.schedule_times }} \
+            --date="$SCHED_DATE"
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parlate-${{ inputs.brand }}-${{ github.run_id }}
+          path: |
+            tmp/output/*-sub.mp4
+            tmp/output/*-sub-small.mp4
+          retention-days: 7
+          if-no-files-found: warn
