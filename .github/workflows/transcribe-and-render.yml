@@ -62,32 +62,18 @@ jobs:
           mkdir -p tmp/videos
 
           echo "Scarico cartella marco da Drive..."
-          gdown --folder "https://drive.google.com/drive/folders/$DRIVE_MARCO_ID" \
-            --remaining-ok -O tmp/drive-dl 2>&1 || true
+          cd tmp
+          gdown --folder "https://drive.google.com/drive/folders/$DRIVE_MARCO_ID" 2>&1 || true
+          cd ..
 
           echo ""
           echo "=== Contenuto scaricato ==="
-          find tmp/drive-dl -type f 2>/dev/null | head -30
+          find tmp/ -type f -name "*.mp4" -o -name "*.mov" 2>/dev/null | head -30
 
-          DATE_FOLDER="${{ inputs.date_folder }}"
-          if [ -n "$DATE_FOLDER" ]; then
-            echo ""
-            echo "Cerco video in sottocartella: $DATE_FOLDER"
-            # Cerca nella sottocartella specifica
-            FOUND=0
-            for d in "tmp/drive-dl/$DATE_FOLDER" "tmp/drive-dl"; do
-              if [ -d "$d" ]; then
-                find "$d" -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mov" \) -exec cp {} tmp/videos/ \;
-                FOUND=$(ls tmp/videos/*.mp4 tmp/videos/*.mov 2>/dev/null | wc -l)
-                if [ "$FOUND" -gt 0 ]; then break; fi
-              fi
-            done
-          else
-            # Prendi tutti i video (non nelle sottocartelle fatto/Pubblicato)
-            find tmp/drive-dl -type f \( -iname "*.mp4" -o -iname "*.mov" \) \
-              ! -path "*/fatto/*" ! -path "*/Pubblicato/*" ! -path "*/Reel/*" \
-              -exec cp {} tmp/videos/ \;
-          fi
+          # Copia tutti i video mp4/mov trovati (escudi fatto/Pubblicato/Reel)
+          find tmp/ -type f \( -iname "*.mp4" -o -iname "*.mov" \) \
+            ! -path "*/fatto/*" ! -path "*/Pubblicato/*" ! -path "*/Reel/*" \
+            -exec cp {} tmp/videos/ \;
 
           echo ""
           echo "=== Video da processare ==="
