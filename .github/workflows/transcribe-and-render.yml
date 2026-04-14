@@ -1,12 +1,13 @@
-name: Sottotitola Parlate da Drive
+name: Sottotitola e Pubblica Parlate
 
 on:
   workflow_dispatch:
     inputs:
-      drive_folder:
-        description: 'URL o ID cartella Google Drive con i video (deve essere condivisa con link)'
-        required: true
+      date_folder:
+        description: 'Cartella data su Drive (es. "14 04"). Vuoto = tutti i video nuovi'
+        required: false
         type: string
+        default: ''
       brand:
         description: 'Brand'
         required: false
@@ -17,18 +18,17 @@ on:
           - 362gradi
         default: 'marco'
       schedule_times:
-        description: 'Orari IT pubblicazione (es. 10:00,16:00). Vuoto = solo render, no IG'
+        description: 'Orari IT pubblicazione. Vuoto = solo render, no IG'
         required: false
         type: string
         default: '10:00,16:00'
-      schedule_date:
-        description: 'Data pubblicazione YYYY-MM-DD (vuoto = oggi)'
-        required: false
-        type: string
-        default: ''
 
 permissions:
   contents: read
+
+env:
+  # Cartella "marco" dentro Storie Parlate (condivisa con link)
+  DRIVE_MARCO_ID: '14GFCN2yM0D9A6D06sjpX1Dxjxmq-0eDq'
 
 jobs:
   render:
@@ -45,7 +45,7 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Setup Python + gdown
+      - name: Setup gdown
         run: pip install gdown
 
       - name: Install ffmpeg
@@ -59,9 +59,44 @@ jobs:
 
       - name: Download video da Google Drive
         run: |
-          node scripts/drive-download.mjs \
-            --folder-id="${{ inputs.drive_folder }}" \
-            --output=tmp/videos
+          mkdir -p tmp/videos
+
+          echo "Scarico cartella marco da Drive..."
+          gdown --folder "https://drive.google.com/drive/folders/$DRIVE_MARCO_ID" \
+            --remaining-ok -O tmp/drive-dl 2>&1 || true
+
+          echo ""
+          echo "=== Contenuto scaricato ==="
+          find tmp/drive-dl -type f 2>/dev/null | head -30
+
+          DATE_FOLDER="${{ inputs.date_folder }}"
+          if [ -n "$DATE_FOLDER" ]; then
+            echo ""
+            echo "Cerco video in sottocartella: $DATE_FOLDER"
+            # Cerca nella sottocartella specifica
+            FOUND=0
+            for d in "tmp/drive-dl/$DATE_FOLDER" "tmp/drive-dl"; do
+              if [ -d "$d" ]; then
+                find "$d" -maxdepth 1 -type f \( -iname "*.mp4" -o -iname "*.mov" \) -exec cp {} tmp/videos/ \;
+                FOUND=$(ls tmp/videos/*.mp4 tmp/videos/*.mov 2>/dev/null | wc -l)
+                if [ "$FOUND" -gt 0 ]; then break; fi
+              fi
+            done
+          else
+            # Prendi tutti i video (non nelle sottocartelle fatto/Pubblicato)
+            find tmp/drive-dl -type f \( -iname "*.mp4" -o -iname "*.mov" \) \
+              ! -path "*/fatto/*" ! -path "*/Pubblicato/*" ! -path "*/Reel/*" \
+              -exec cp {} tmp/videos/ \;
+          fi
+
+          echo ""
+          echo "=== Video da processare ==="
+          ls -lh tmp/videos/ 2>/dev/null || echo "Nessun video trovato!"
+          COUNT=$(ls tmp/videos/*.mp4 tmp/videos/*.mov 2>/dev/null | wc -l)
+          if [ "$COUNT" -eq 0 ]; then
+            echo "ERRORE: nessun video trovato"
+            exit 1
+          fi
 
       - name: Render sottotitoli
         env:
@@ -75,19 +110,13 @@ jobs:
 
       - name: Lista output
         run: |
-          echo "=== Video generati ==="
+          echo "=== Video sottotitolati ==="
           ls -lh tmp/output/*-sub.mp4 2>/dev/null || echo "Nessun video generato!"
-          echo ""
-          echo "=== Tutti i file ==="
-          ls -lh tmp/output/ 2>/dev/null
 
       - name: Upload su IG Schedule
         if: inputs.schedule_times != ''
         run: |
-          SCHED_DATE="${{ inputs.schedule_date }}"
-          if [ -z "$SCHED_DATE" ]; then
-            SCHED_DATE=$(date -u +%Y-%m-%d)
-          fi
+          SCHED_DATE=$(date -u +%Y-%m-%d)
           node scripts/upload-spoken-to-ig.mjs \
             --input=tmp/output \
             --brand=${{ inputs.brand }} \
