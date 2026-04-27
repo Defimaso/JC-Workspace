@@ -1,0 +1,35 @@
+name: Daily Report Social Telegram
+
+on:
+  schedule:
+    # 06:00 UTC = 08:00 Italia (CEST estate UTC+2). Ogni mattina.
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run social follower report (4 account)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          META_362_TOKEN: ${{ secrets.META_362_TOKEN }}
+          IG_TOKEN_362GRADI: ${{ secrets.IG_TOKEN_362GRADI }}
+          IG_TOKEN_MARCO: ${{ secrets.IG_TOKEN_MARCO }}
+          IG_TOKEN_DEFIMASO: ${{ secrets.IG_TOKEN_DEFIMASO }}
+        run: |
+          printf 'META_362_TOKEN=%s\n' "$META_362_TOKEN" > .env
+          mkdir -p progetti/MasoLab
+          {
+            printf 'IG_TOKEN_362GRADI="%s"\n' "$IG_TOKEN_362GRADI"
+            printf 'IG_TOKEN_MARCO="%s"\n' "$IG_TOKEN_MARCO"
+            printf 'IG_TOKEN_DEFIMASO="%s"\n' "$IG_TOKEN_DEFIMASO"
+          } > progetti/MasoLab/.env.production
+          node scripts/report-daily-social.mjs

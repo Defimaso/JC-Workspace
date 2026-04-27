@@ -1,0 +1,21 @@
+name: Daily Report Funnel Telegram
+
+on:
+  schedule:
+    # 06:05 UTC = 08:05 Italia (5 min dopo social per ordine arrivo)
+    - cron: '5 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run funnel report
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node scripts/report-daily-funnel.mjs
