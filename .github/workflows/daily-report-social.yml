@@ -1,9 +1,8 @@
 name: Daily Report Social Telegram
 
 on:
-  schedule:
-    # 06:00 UTC = 08:00 Italia (CEST estate UTC+2). Ogni mattina.
-    - cron: '0 6 * * *'
+  # DISATTIVATO: cron spostato su Vercel (vercel-cron-reports.vercel.app/api/run-daily-reports).
+  # Manual dispatch resta per fallback.
   workflow_dispatch:
 
 jobs:
