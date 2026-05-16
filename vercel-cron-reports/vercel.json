@@ -3,6 +3,10 @@
     {
       "path": "/api/run-daily-reports",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cleanup-old-media",
+      "schedule": "0 3 * * *"
     }
   ]
 }
