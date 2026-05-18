@@ -7,6 +7,14 @@
     {
       "path": "/api/cleanup-old-media",
       "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/sync-calendly-bookings",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/wa-monitor-healthcheck",
+      "schedule": "*/15 * * * *"
     }
   ]
 }
