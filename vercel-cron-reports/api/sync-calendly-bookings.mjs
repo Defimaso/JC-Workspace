@@ -8,9 +8,9 @@
  */
 
 const SUPABASE_URL = 'https://ppbbqchycxffsfavtsjp.supabase.co';
-const SRK = process.env.SUPABASE_SERVICE_KEY;
-const CAL_TOKEN = process.env.CALENDLY_TOKEN;
-const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const SRK = (process.env.SUPABASE_SERVICE_KEY || '').trim();
+const CAL_TOKEN = (process.env.CALENDLY_TOKEN || '').trim();
+const TG_TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const TG_CHATS = [process.env.TELEGRAM_CHAT_ID || '489480689', process.env.TELEGRAM_CHAT_ID_2 || '403582502'];
 
 const HS = { apikey: SRK, Authorization: `Bearer ${SRK}`, 'Content-Type': 'application/json' };
@@ -120,14 +120,14 @@ async function insertFunnelEvent(rec) {
 
 export default async function handler(req, res) {
   // Auth
-  const auth = req.headers.authorization || '';
-  const queryToken = req.query?.token || '';
+  const auth = req.headers?.authorization || '';
+  const queryToken = (req.query && req.query.token) || '';
   const cronSecret = process.env.CRON_SECRET || '';
   const ok = (auth === `Bearer ${cronSecret}`) || (cronSecret && queryToken === cronSecret) || !cronSecret;
   if (!ok) return res.status(401).json({ error: 'unauthorized' });
 
   if (!SRK || !CAL_TOKEN || !TG_TOKEN) {
-    return res.status(500).json({ error: 'missing env vars', need: ['SUPABASE_SERVICE_KEY','CALENDLY_TOKEN','TELEGRAM_BOT_TOKEN'] });
+    return res.status(500).json({ error: 'missing env vars', need: ['SUPABASE_SERVICE_KEY','CALENDLY_TOKEN','TELEGRAM_BOT_TOKEN'], have: { SRK: !!SRK, CAL: !!CAL_TOKEN, TG: !!TG_TOKEN } });
   }
 
   try {
@@ -224,6 +224,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ ok: true, ...results });
   } catch (e) {
-    return res.status(500).json({ error: String(e.message || e) });
+    console.error('sync-calendly-bookings ERROR:', e);
+    return res.status(500).json({ error: String(e.message || e), stack: String(e.stack || '').slice(0, 500) });
   }
 }
