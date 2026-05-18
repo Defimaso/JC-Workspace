@@ -188,6 +188,10 @@ export default async function handler(req, res) {
           metadata: { match_type: match.matchType, calendly_event_uri: ev.uri, via: 'vercel-cron-poller' },
         });
 
+        // Determina tipo call dalle risposte: SKIP notifica TG per "check" mensili (clienti esistenti)
+        const allAnswersText = (invitee.questions_and_answers || []).map((q) => (q.answer || '').toLowerCase()).join(' | ');
+        const isCheckCall = /\bcheck\b/i.test(allAnswersText);
+
         const matchEmoji = match.matchType === 'email' ? '✅' : match.matchType === 'name' ? '⚠️' : '❌';
         const matchLabel = match.matchType === 'email' ? 'Quiz lead trovato'
           : match.matchType === 'name' ? `Match per nome (email quiz: ${match.otherEmail})`
@@ -213,9 +217,14 @@ export default async function handler(req, res) {
           tgLines.push('', '📝 *Risposte:*');
           for (const q of qa.slice(0, 5)) tgLines.push(`   ${q.question}: ${q.answer}`);
         }
-        await tgSend(tgLines.join('\n'));
+
+        // Invia Telegram SOLO per call conoscitive (non per "check" mensili clienti esistenti)
+        if (!isCheckCall) {
+          await tgSend(tgLines.join('\n'));
+        }
 
         results.new++;
+        if (isCheckCall) results.skipped_tg = (results.skipped_tg || 0) + 1;
       } catch (e) {
         results.errors.push(String(e.message || e).slice(0, 200));
       }
